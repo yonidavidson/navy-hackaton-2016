@@ -25,6 +25,18 @@ router.post('/updateStatus', function (req, res, next) {
     res.status(200).send(global.globalStatus);
 });
 
+
+router.get('/madaz', function (req, res, next) {
+    global.globalStatus.madaz = true;
+    res.status(200).send(global.globalStatus);
+});
+
+
+router.get('/power', function (req, res, next) {
+    global.globalStatus.power = true;
+    res.status(200).send(global.globalStatus);
+});
+
 router.get('/sendSMS', function (req,res,next) {
     var c = new TMClient('username', 'C7XDKZOQZo6HvhJwtUw0MBcslfqwtp4');
     c.Messages.send({text: 'test message', phones:'972544668186'}, function(err, res){
