@@ -23,13 +23,13 @@ var globalStatus = {
 global.globalStatus = globalStatus;
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-router.get('/2button', function(req, res, next) {
-    res.render('2-button', { title: 'Express' });
-});
+// router.get('/', function(req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
+//
+// router.get('/2button', function(req, res, next) {
+//     res.render('2-button', { title: 'Express' });
+// });
 
 router.get('/getStatus', function(req, res, next) {
     res.status(200).send(global.globalStatus);
