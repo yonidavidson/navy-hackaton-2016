@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-docs-samples-speech",
+  "version": "0.0.1",
+  "private": true,
+  "license": "Apache Version 2.0",
+  "author": "Google Inc.",
+  "scripts": {
+    "test": "cd ..; npm run st -- speech/system-test/*.test.js",
+    "cred" : "export GCLOUD_PROJECT=pachyderm && gcloud beta auth application-default login"
+  },
+  "dependencies": {
+    "@google-cloud/speech": "^0.4.0",
+    "node-record-lpcm16": "^0.1.4",
+    "yargs": "^6.4.0"
+  },
+  "engines": {
+    "node": ">=4.3.2"
+  }
+}
