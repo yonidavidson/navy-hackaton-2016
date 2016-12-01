@@ -33,8 +33,9 @@ function streamingMicRecognize () {
           if (json !== ""){
             console.log("");
             console.log(json);
-            // let command = "./talk.sh " + json
-            // execSync(command);
+            let command = "./talk.sh " + json.message
+            console.log(command);
+            execSync(command);
           }
           })//end of fetch
       }
