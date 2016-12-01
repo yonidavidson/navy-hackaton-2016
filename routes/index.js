@@ -3,8 +3,14 @@ var router = express.Router();
 
 
 var globalStatus = {
-    event: {location: 'Hartom', type: 'Fire' },
-    missingPeople: false
+    power: false,
+    isolation: false,
+    madaz: false,
+    reportOut: false,
+    firemen: false,
+    recommendation1: "",
+    recommendation2: "",
+    recommendation3: ""
 };
 
 global.globalStatus = globalStatus;
@@ -20,20 +26,60 @@ router.get('/getStatus', function(req, res, next) {
     //res.render('index', { title: 'hello Yossilevich' });
 });
 
-router.post('/updateStatus', function (req, res, next) {
-    global.globalStatus = req.body;
+// router.post('/updateStatus', function (req, res, next) {
+//     global.globalStatus = req.body;
+//     res.status(200).send(global.globalStatus);
+// });
+
+router.get('/reset', function (req, res, next) {
+    global.globalStatus = {
+        power: false,
+            isolation: false,
+            madaz: false,
+            reportOut: false,
+            firemen: false};
     res.status(200).send(global.globalStatus);
 });
 
+router.get('/power', function (req, res, next) {
+    global.globalStatus.power = true;
+    res.status(200).send(global.globalStatus);
+});
+
+router.get('/isolation', function (req, res, next) {
+    global.globalStatus.isolation = true;
+    res.status(200).send(global.globalStatus);
+});
 
 router.get('/madaz', function (req, res, next) {
     global.globalStatus.madaz = true;
     res.status(200).send(global.globalStatus);
 });
 
+router.get('/reportOut', function (req, res, next) {
+    global.globalStatus.reportOut = true;
+    res.status(200).send(global.globalStatus);
+});
 
-router.get('/power', function (req, res, next) {
-    global.globalStatus.power = true;
+router.get('/firemen', function (req, res, next) {
+    global.globalStatus.firemen = true;
+    res.status(200).send(global.globalStatus);
+});
+
+router.get('/recommendation1', function (req, res, next) {
+    global.globalStatus.recommendation1 =  "אין לכבות את השריפה עם הידרהטץ מתחים לא נותקו";
+    res.status(200).send(global.globalStatus);
+});
+
+
+router.get('/recommendation2', function (req, res, next) {
+    global.globalStatus.recommendation2 =  "מתחים נותקו. ניתן להכניס כבאים עם הידרנט";
+    res.status(200).send(global.globalStatus);
+});
+
+
+router.get('/recommendation3', function (req, res, next) {
+    global.globalStatus.recommendation3 = "הודעה הועברה לגורמי חוץ";
     res.status(200).send(global.globalStatus);
 });
 
