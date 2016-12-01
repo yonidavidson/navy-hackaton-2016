@@ -25,16 +25,19 @@ function streamingMicRecognize () {
     .on('data', (data) =>{
       const message = data.results
       process.stdout.write(message)
-      fetch('http://navyhack2016.azurewebsites.net/getStatus')
-      .then(function(res) {
-        return res.json();
-      }).then(function(json) {
-        if (json !== ""){
-          console.log(json);
-          // let command = "./talk.sh " + json
-          // execSync(command);
-        }
-        })
+      if (message !== ''){
+        fetch('http://navyhack2016.azurewebsites.net/getStatus')
+        .then(function(res) {
+          return res.json();
+        }).then(function(json) {
+          if (json !== ""){
+            console.log("");
+            console.log(json);
+            // let command = "./talk.sh " + json
+            // execSync(command);
+          }
+          })//end of fetch
+      }
     })
 
   // Start recording and send the microphone input to the Speech API
