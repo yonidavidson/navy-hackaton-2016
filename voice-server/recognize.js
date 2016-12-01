@@ -1,6 +1,7 @@
 'use strict';
 
 const Speech = require('@google-cloud/speech');
+const execSync = require('child_process').execSync;
 
 // [START speech_streaming_mic_recognize]
 const record = require('node-record-lpcm16');
@@ -20,7 +21,15 @@ function streamingMicRecognize () {
   // Create a recognize stream
   const recognizeStream = speech.createRecognizeStream(options)
     .on('error', console.error)
-    .on('data', (data) => process.stdout.write(data.results));
+    .on('data', (data) =>{
+      const message = data.results
+      process.stdout.write(message)
+      if (message !== ""){
+        let command = "./talk.sh " + message
+        execSync(command);
+      }
+      
+    });
 
   // Start recording and send the microphone input to the Speech API
   record.start({ sampleRate: 16000 })
