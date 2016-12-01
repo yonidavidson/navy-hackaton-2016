@@ -6,7 +6,7 @@
   "author": "Google Inc.",
   "scripts": {
     "test": "cd ..; npm run st -- speech/system-test/*.test.js",
-    "cred" : "export GCLOUD_PROJECT=pachyderm && gcloud beta auth application-default login"
+    "cred" : "gcloud beta auth application-default login"
   },
   "dependencies": {
     "@google-cloud/speech": "^0.4.0",
