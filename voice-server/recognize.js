@@ -26,19 +26,26 @@ function streamingMicRecognize () {
       const message = data.results
       process.stdout.write(message)
       if (message !== ''){
-        fetch('http://navyhack2016.azurewebsites.net/getStatus')
-        .then(function(res) {
-          return res.json();
-        }).then(function(json) {
-          if (json !== ""){
-            console.log("");
-            console.log(json);
-            let command = "./talk.sh " + json.message
-            console.log(command);
-            execSync(command);
-          }
-          })//end of fetch
+        if (message.search('ready')>0){
+          console.log("update firemen /n")
+          fetch('http://navyhack2016.azurewebsites.net/fireMen')
+        }else
+        {
+          fetch('http://navyhack2016.azurewebsites.net/getStatus')
+          .then(function(res) {
+            return res.json();
+          }).then(function(json) {
+            if (json !== ""){
+              console.log("");
+              console.log(json);
+              let command = "./talk.sh " + json.message
+              console.log(command);
+              execSync(command);
+            }
+            })//end of fetch
+        }
       }
+      
     })
 
   // Start recording and send the microphone input to the Speech API
