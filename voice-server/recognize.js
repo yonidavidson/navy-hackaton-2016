@@ -7,6 +7,7 @@ const fetch = require('node-fetch')
 // [START speech_streaming_mic_recognize]
 const record = require('node-record-lpcm16');
 
+const firstTime = process.env.FIRST_TIME
 function streamingMicRecognize () {
   // Instantiates a client
   const speech = Speech();
@@ -25,7 +26,7 @@ function streamingMicRecognize () {
     .on('data', (data) =>{
       const message = data.results
       process.stdout.write(message)
-      if (true){
+      if (firstTime !== "false" || message !== ""){
         if (message.search('ready')>0){
           console.log("")
           console.log("update firemen")
