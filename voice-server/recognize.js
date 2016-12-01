@@ -26,6 +26,6 @@ function streamingMicRecognize () {
   record.start({ sampleRate: 16000 })
   setTimeout(function () {
   record.stop().pipe(recognizeStream);
-  }, 2000);
+  }, 3000);
 }
 streamingMicRecognize()
