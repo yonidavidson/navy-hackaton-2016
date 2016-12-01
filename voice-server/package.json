@@ -6,10 +6,11 @@
   "author": "Google Inc.",
   "scripts": {
     "test": "cd ..; npm run st -- speech/system-test/*.test.js",
-    "cred" : "gcloud beta auth application-default login"
+    "cred": "gcloud beta auth application-default login"
   },
   "dependencies": {
     "@google-cloud/speech": "^0.4.0",
+    "node-fetch": "^1.6.3",
     "node-record-lpcm16": "^0.1.4",
     "yargs": "^6.4.0"
   },
