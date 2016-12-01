@@ -4,6 +4,8 @@ const Speech = require('@google-cloud/speech');
 const execSync = require('child_process').execSync;
 const fetch = require('node-fetch')
 
+let firstTime = true
+
 // [START speech_streaming_mic_recognize]
 const record = require('node-record-lpcm16');
 
@@ -27,7 +29,8 @@ function streamingMicRecognize () {
       process.stdout.write(message)
       if (message !== ''){
         if (message.search('ready')>0){
-          console.log("update firemen /n")
+          console.log("")
+          console.log("update firemen")
           fetch('http://navyhack2016.azurewebsites.net/fireMen')
         }else
         {
@@ -38,9 +41,15 @@ function streamingMicRecognize () {
             if (json !== ""){
               console.log("");
               console.log(json);
-              let command = "./talk.sh " + json.message
-              console.log(command);
-              execSync(command);
+              if (firstTime && json.madaz){
+                let command = "./madaz.sh "
+                console.log(command);
+                execSync(command);  
+              }else{
+                let command = "./talk.sh " + json.message
+                console.log(command);
+                execSync(command);
+              }
             }
             })//end of fetch
         }
