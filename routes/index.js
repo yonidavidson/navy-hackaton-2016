@@ -14,7 +14,7 @@ var globalStatus = {
     madaz: false,
     reportOut: false,
     firemen: false,
-    recommendation1:  "אין לכבות את השריפה עם הידרהטץ מתחים לא נותקו",
+    recommendation1:  "אין לכבות את השריפה עם הידרנט מתחים לא נותקו",
     recommendation2: "",
     recommendation3: "",
     message: ""
@@ -47,6 +47,7 @@ router.get('/reset', function (req, res, next) {
         isolation: false,
         madaz: false,
         reportOut: false,
+        overallReport: false,
         firemen: false,
         recommendation1: "",
         recommendation2: "",
@@ -88,6 +89,7 @@ router.get('/madaz', function (req, res, next) {
         console.log('Message UUID:\n', response['message_uuid']);
         console.log('Api ID:\n', response['api_id']);
         global.globalStatus.reportOut = true;
+        global.globalStatus.overallReport = true;
     });
 
     res.status(200).send(global.globalStatus);

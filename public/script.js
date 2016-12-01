@@ -1,13 +1,16 @@
 function updateUI(status) {
 //    document.getElementById("power").innerHTML = "hahahah";
+
     setLabelColor(status,"power");
     setLabelColor(status,"isolation");
     setLabelColor(status,"firemen");
     setLabelColor(status,"pipelines");
-    setRecomandation(status,"recommandation1");
-    setRecomandation(status,"recommandation2");
-    setRecomandation(status,"recommandation3");
-    // setLabelColor(status,"water_pressure");
+    setLabelColor(status,"madaz");
+    setLabelColor(status,"reportOut");
+    setLabelColor(status,"overallReport");
+    setRecomandation(status,"recommendation1");
+    setRecomandation(status,"recommendation2");
+    setRecomandation(status,"recommendation3");
     // setLabelColor(status,"all_personel_on_board");
 }
 function setLabelColor(status,name) {
