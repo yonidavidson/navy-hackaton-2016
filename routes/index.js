@@ -72,7 +72,6 @@ router.get('/isolation', function (req, res, next) {
 
 router.get('/madaz', function (req, res, next) {
     global.globalStatus.madaz = true;
-    global.globalStatus.playWave = true;
 
     var params = {
         'src': '1111111', // Sender's phone number with country code
@@ -88,6 +87,7 @@ router.get('/madaz', function (req, res, next) {
         console.log('API Response:\n', response);
         console.log('Message UUID:\n', response['message_uuid']);
         console.log('Api ID:\n', response['api_id']);
+        global.globalStatus.reportOut = true;
     });
 
     res.status(200).send(global.globalStatus);
