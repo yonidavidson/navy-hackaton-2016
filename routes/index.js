@@ -18,7 +18,11 @@ var globalStatus = {
     recommendation1:  "אין לכבות את השריפה עם הידרנט מתחים לא נותקו",
     recommendation2: "",
     recommendation3: "",
-    message: ""
+    message: "",
+    num1: "972544668186",
+    num2: "972544668186",
+    num3: "972544668186",
+    num4: "972544668186"
 };
 
 global.globalStatus = globalStatus;
@@ -55,8 +59,29 @@ router.get('/reset', function (req, res, next) {
         recommendation1:  "אין לכבות את השריפה עם הידרנט מתחים לא נותקו",
         recommendation2: "",
         recommendation3: "",
-        message: ""
+        message: "",
+        num1: "972544668186",
+        num2: "972544668186",
+        num3: "972544668186",
+        num4: "972544668186"
     };
+    res.status(200).send(global.globalStatus);
+});
+router.get('/resetNumbers', function (req, res, next) {
+    global.globalStatus.num1 = "972544668186";
+    global.globalStatus.num2 = "972544668186";
+    global.globalStatus.num3 = "972544668186";
+    global.globalStatus.num4 = "972544668186";
+
+    res.status(200).send(global.globalStatus);
+});
+
+router.get('/setNumbers', function (req, res, next) {
+    global.globalStatus.num1 = "972529203155";
+    global.globalStatus.num2 = "972529210717";
+    global.globalStatus.num3 = "97529215678";
+    global.globalStatus.num4 = "972544668186";
+
     res.status(200).send(global.globalStatus);
 });
 
@@ -83,7 +108,7 @@ router.get('/madaz', function (req, res, next) {
     var text = 'Message from InCo - תרגול תרגול - שריפה במכונה קדמי באח"י עצמאות ברציף חווה';
     var params1 = {
         'src': '1111111', // Sender's phone number with country code
-        'dst' : '972544668186', // Receiver's phone Number with country code
+        'dst' : global.globalStatus.num1, // Receiver's phone Number with country code
         'text' : text, // Your SMS Text Message - English
         'url' : "http://example.com/report/", // The URL to which with the status of the message is sent
         'method' : "GET" // The method used to call the url
@@ -91,7 +116,7 @@ router.get('/madaz', function (req, res, next) {
 
     var params2 = {
         'src': '1111111', // Sender's phone number with country code
-        'dst' : '972544668186', // Receiver's phone Number with country code
+        'dst' : global.globalStatus.num2, // Receiver's phone Number with country code
         'text' : text, // Your SMS Text Message - English
         'url' : "http://example.com/report/", // The URL to which with the status of the message is sent
         'method' : "GET" // The method used to call the url
@@ -99,7 +124,7 @@ router.get('/madaz', function (req, res, next) {
 
     var params3 = {
         'src': '1111111', // Sender's phone number with country code
-        'dst' : '972544668186', // Receiver's phone Number with country code
+        'dst' : global.globalStatus.num3, // Receiver's phone Number with country code
         'text' : text, // Your SMS Text Message - English
         'url' : "http://example.com/report/", // The URL to which with the status of the message is sent
         'method' : "GET" // The method used to call the url
@@ -107,7 +132,7 @@ router.get('/madaz', function (req, res, next) {
 
     var params4 = {
         'src': '1111111', // Sender's phone number with country code
-        'dst' : '972544668186', // Receiver's phone Number with country code
+        'dst' : global.globalStatus.num4, // Receiver's phone Number with country code
         'text' : text, // Your SMS Text Message - English
         'url' : "http://example.com/report/", // The URL to which with the status of the message is sent
         'method' : "GET" // The method used to call the url

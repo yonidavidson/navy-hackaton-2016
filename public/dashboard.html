@@ -14,6 +14,10 @@
 </br>
 <button type="button" onclick="getStatus()">Get Status</button>
 </br>
+<button type="button" onclick="setNumbers()">Set Numbers</button>
+</br>
+<button type="button" onclick="resetNumbers()">Reset Numbers</button>
+</br>
 <button type="button" onclick="madazOff()">Madaz Off</button>
 </br>
 <button type="button" onclick="madazOn()">Madaz On</button>
@@ -23,6 +27,19 @@
 <button type="button" onclick="resetStatus()">RESET Status</button>
 </body>
 <script>
+
+    function resetNumbers() {
+        $.ajax({url: "/resetNumbers",  success: function(status){
+            console.log("reset numbers success");
+        }});
+    }
+
+    function setNumbers() {
+        $.ajax({url: "/setNumbers",  success: function(status){
+            console.log("set numbers success");
+        }});
+    }
+
     function startPower() {
         $.ajax({url: "/power", crossDomain : true, success: function(status){
             console.log("Power success");
