@@ -12,6 +12,7 @@ var globalStatus = {
     power: false,
     isolation: false,
     madaz: false,
+    reportIn: false,
     reportOut: false,
     firemen: false,
     recommendation1:  "אין לכבות את השריפה עם הידרנט מתחים לא נותקו",
@@ -33,6 +34,7 @@ global.globalStatus = globalStatus;
 
 router.get('/getStatus', function(req, res, next) {
     res.status(200).send(global.globalStatus);
+    // global.globalStatus.madaz = false;
     //res.render('index', { title: 'hello Yossilevich' });
 });
 
@@ -46,14 +48,14 @@ router.get('/reset', function (req, res, next) {
         power: false,
         isolation: false,
         madaz: false,
+        reportIn: false,
         reportOut: false,
         overallReport: false,
         firemen: false,
-        recommendation1: "",
+        recommendation1:  "אין לכבות את השריפה עם הידרנט מתחים לא נותקו",
         recommendation2: "",
         recommendation3: "",
-        message: "",
-        playWave: false
+        message: ""
     };
     res.status(200).send(global.globalStatus);
 });
@@ -71,26 +73,62 @@ router.get('/isolation', function (req, res, next) {
     res.status(200).send(global.globalStatus);
 });
 
+router.get('/madazOff', function (req, res, next) {
+    global.globalStatus.madaz = false;
+});
+
 router.get('/madaz', function (req, res, next) {
     global.globalStatus.madaz = true;
 
-    var params = {
+    var text = 'Message from InCo - תרגול תרגול - שריפה במכונה קדמי באח"י עצמאות ברציף חווה';
+    var params1 = {
         'src': '1111111', // Sender's phone number with country code
-        'dst' : '972543922559', // Receiver's phone Number with country code
-        'text' : "Message from InCo - שריפה במכונה קדמי", // Your SMS Text Message - English
+        'dst' : '972544668186', // Receiver's phone Number with country code
+        'text' : text, // Your SMS Text Message - English
         'url' : "http://example.com/report/", // The URL to which with the status of the message is sent
         'method' : "GET" // The method used to call the url
     };
 
-// Prints the complete response
-    p.send_message(params, function (status, response) {
-        console.log('Status: ', status);
-        console.log('API Response:\n', response);
-        console.log('Message UUID:\n', response['message_uuid']);
-        console.log('Api ID:\n', response['api_id']);
-        global.globalStatus.reportOut = true;
-        global.globalStatus.overallReport = true;
+    var params2 = {
+        'src': '1111111', // Sender's phone number with country code
+        'dst' : '972544668186', // Receiver's phone Number with country code
+        'text' : text, // Your SMS Text Message - English
+        'url' : "http://example.com/report/", // The URL to which with the status of the message is sent
+        'method' : "GET" // The method used to call the url
+    };
+
+    var params3 = {
+        'src': '1111111', // Sender's phone number with country code
+        'dst' : '972544668186', // Receiver's phone Number with country code
+        'text' : text, // Your SMS Text Message - English
+        'url' : "http://example.com/report/", // The URL to which with the status of the message is sent
+        'method' : "GET" // The method used to call the url
+    };
+
+    var params4 = {
+        'src': '1111111', // Sender's phone number with country code
+        'dst' : '972544668186', // Receiver's phone Number with country code
+        'text' : text, // Your SMS Text Message - English
+        'url' : "http://example.com/report/", // The URL to which with the status of the message is sent
+        'method' : "GET" // The method used to call the url
+    };
+
+    p.send_message(params1, function (status, response) {
+        p.send_message(params2, function (status, response) {
+            p.send_message(params3, function (status, response) {
+                p.send_message(params4, function (status, response) {
+                    console.log('Status: ', status);
+                    console.log('API Response:\n', response);
+                    console.log('Message UUID:\n', response['message_uuid']);
+                    console.log('Api ID:\n', response['api_id']);
+                });
+            });
+        });
     });
+
+    global.globalStatus.reportOut = true;
+    global.globalStatus.reportIn = true;
+    global.globalStatus.overallReport = true;
 
     res.status(200).send(global.globalStatus);
 });

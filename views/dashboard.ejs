@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Control Dashboard</title>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+</head>
+<body>
+<button type="button" onclick="startPower()">POWER</button>
+</br>
+<button type="button" onclick="startIsolation()">Isolation</button>
+</br>
+<button type="button" onclick="startFirmen()">Firemen</button>
+</br>
+<button type="button" onclick="getStatus()">Get Status</button>
+</br>
+</br>
+</br>
+<button type="button" onclick="resetStatus()">RESET Status</button>
+</body>
+<script>
+    function startPower() {
+        $.ajax({url: "/power", crossDomain : true, success: function(status){
+            console.log("Power success");
+        }});
+    }
+
+    function startIsolation() {
+        $.ajax({url: "/isolation", crossDomain : true, success: function(status){
+            console.log("Isolaton success");
+        }});
+    }
+
+    function startFirmen() {
+        $.ajax({url: "/firmen", crossDomain : true, success: function(status){
+            console.log("firmen success");
+        }});
+    }
+
+    function getStatus() {
+        $.ajax({url: "/getstatus", crossDomain : true, success: function(status){
+            console.log("get status");
+            console.log(status);
+        }});
+    }
+
+    function resetStatus() {
+        $.ajax({url: "/reset", crossDomain : true, success: function(status){
+            console.log("get status");
+            console.log(status);
+        }});
+    }
+</script>
+</html>

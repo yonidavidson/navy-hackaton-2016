@@ -8,6 +8,8 @@ function updateUI(status) {
     setLabelColor(status,"madaz");
     setLabelColor(status,"reportOut");
     setLabelColor(status,"overallReport");
+    setLabelColor(status, "reportIn");
+    setLabelColor(status, "overallReport");
     setRecomandation(status,"recommendation1");
     setRecomandation(status,"recommendation2");
     setRecomandation(status,"recommendation3");
